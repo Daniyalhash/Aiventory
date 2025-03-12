@@ -1,0 +1,76 @@
+/* Navbar container */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  font-family: 'Poppins',sans-serif;
+
+}
+
+body { /* Or a more specific selector */
+  font-family: 'Poppins', sans-serif;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #F8F8F8;
+  padding: 1rem 2rem;
+  height: 90px;
+}
+
+/* Logo */
+.logo{
+  padding: 1.5rem;
+}
+.logo .logImg {
+  width: 100px;
+  height: 50px;
+}
+
+/* Navigation links container */
+.menu {
+  display: flex;
+  justify-content: center; /* Centers items horizontally */
+  align-items: center; /* Centers items vertically */
+  gap: 1rem;
+  background-color: #F0F0F0;
+  border-radius: 50px;
+  height: 60px; /* Adjusted height */
+}
+
+
+/* Navigation links */
+.menu a {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400; /* Light font style */
+  text-decoration: none;
+  color: #000000;
+  font-size: 1rem;
+  align-items: center; /* Vertically centers items */
+
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Active link styling */
+.menu a.active {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300; /* Light font style */
+  background-color: #17412D; /* Green background for active link */
+  color: white; /* White text for active link */
+  padding: 1rem 1.5rem; /* Adjusted padding to increase the size */
+  border-radius: 30px; /* Matches the container's roundness */
+  transform: scale(1.05); /* Slight enlargement */
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+
+

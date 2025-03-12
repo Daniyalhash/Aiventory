@@ -1,0 +1,97 @@
+.visual-group-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px; /* Increase the gap between charts */
+  padding: 20px;
+  background-color: #f4f4f9;
+  margin: 20px;
+}
+
+
+
+.chart-container {
+  background-color: #fff;
+  padding: 15px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%; /* Ensure the chart container fills the available width */
+}
+  
+  
+.chart-container .recharts-wrapper {
+  width: 100%; /* Make sure the chart takes up the full width */
+  height: 400px; /* Adjust the height as needed */
+}
+
+.big-chart-container {
+  background-color: #fff;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Loading styles if needed */
+.loadingAnimation {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(45deg, #ffb3b3, #c7a2ff);
+  animation: gemini 1.5s infinite ease-in-out;
+}
+
+@keyframes gemini {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+}
+.chartSub{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  
+}
+.bigheader-actions{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.bigrange-dropdown{
+  padding: 10px 10px;
+  border-radius: 50px;
+  border: 1px solid #326D3C;
+  outline: none;
+  transition: border-color 0.3s ease;
+  font-size: 15px;
+  border: 1px solid #17412D;
+
+}
+.bigrange-dropdown:hover{
+  transition: all .4s ease-in-out;
+  background-color: #A9E6A0;
+}
+.color{
+  color: #17412D;
+  color: #70D560;
+  color: #326D3C; 
+  /* dark color refer white */
+      /* light color refer dark */
+
+  color: #A9E6A0;
+}

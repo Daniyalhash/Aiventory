@@ -1,0 +1,84 @@
+.action-container {
+  padding: 20px 50px;
+  border: 1px solid #ddd;
+
+  margin: 15px 0;
+  border-radius: 8px;
+  background: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 10px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #17412D;
+  border-radius: 10px;
+  font-size: 15px;
+}
+.filterP,
+.sortP,
+.addP,
+.importP {
+  font-size: 20px;
+  font-weight: 300;
+}
+
+
+.export-csv-button,
+.action-button {
+  padding: 10px 15px;
+  background-color: #70D560;
+  color: white;
+  font-size: 16px;
+  font-weight: 100;
+  border: none;
+  border-radius: 25px;
+  border: 1px solid #70D560;
+
+  cursor: pointer;
+}
+
+
+.export-csv-button:hover,
+.action-button:hover {
+  background-color: transparent;
+  border: 1px solid #17412D;
+  color: #70D560;
+}
+.action-container.pre{
+  font-size: 20px;
+  font-weight: 300;
+}
+.action-container.pre2{
+  font-size: 20px;
+  font-weight: 300;
+}
+.add-product .input-field {
+  background-color: #ffffff;
+  max-width: 500px;
+}
+
+.import-csv {
+  background-color: transparent;
+}
+
+.export-csv {
+  background-color: transparent;
+}
+
+.exportP{
+  font-weight: 500;
+  font-size: 20px;
+
+}
+.search-product .search-bar {
+  background-color: transparent;
+  width: 500px;
+}
+
+.search-product .action-button {
+  margin-top: 10px;
+}

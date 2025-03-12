@@ -1,0 +1,78 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  font-family: 'Poppins',sans-serif;
+
+}
+.landingContainer {
+  text-align: center;
+  padding: 60px 20px; /* Reduced padding to move content upward */
+  background-color: #70D560;
+  height: auto;
+}
+
+.landingContainer h1 {
+  font-size: 80px;
+  font-weight: bold;
+}
+
+.getStarted {
+  background: black;
+  color: white;
+  margin-top: 20px;
+
+  padding: 8px 30px;
+  font-size: 1.2rem;
+
+  cursor: pointer;
+  border-radius: 50px;
+}
+
+.dashboardImage {
+  margin-top: 40px;
+}
+
+.dashboardImage img {
+  width: 100%;
+  max-width: 1000px;
+  border-radius: 10px;
+  
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+}
+/* Additional Images */
+.dashboardImage2,
+.dashboardImage3,
+.dashboardImage4,.dashboardImage5,.dashboardImage6 {
+  position: absolute;
+  width: 100px; /* Adjust size */
+  height: auto;
+}
+
+/* Positioning for each image */
+.dashboardImage2 {
+  top:300px; /* Move it upward */
+  left: 100px; /* Align left */
+}
+
+.dashboardImage3 {
+  top: 300px; /* Adjust height */
+  right: 250px; /* Move it to the right */
+}
+
+.dashboardImage4 {
+  top: 200px; /* Adjust height */
+  right: 150px; /* Move it to the right */
+  transform: translateX(-50%);
+}
+.dashboardImage5 {
+  top: 200px; /* Adjust height */
+  left: 150px; /* Move it to the right */
+  transform: translateX(-50%);
+}
+.dashboardImage6 {
+  top: 470px; /* Adjust height */
+  right: 100px; /* Move it to the right */
+  transform: translateX(-50%);
+}

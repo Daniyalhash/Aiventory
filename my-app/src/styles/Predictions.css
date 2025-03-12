@@ -1,0 +1,86 @@
+/* src/styles/button.css */
+
+/* Center the button on the page */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    background-color: #f5f5f5; /* Light background color */
+  }
+  
+  /* Styled Button */
+  .login-button {
+    padding: 1rem 2rem;
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: white;
+    background-color: #0070f3; /* Blue color */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .login-button:hover {
+    background-color: #005bb5; /* Darker blue on hover */
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+  }
+  
+  .login-button:active {
+    transform: scale(0.95);
+  }
+
+/* styles/Predictions.css */
+.VendorPage{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  padding: 20px;
+}
+.mainAnalysis {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center charts horizontally */
+  width: 100%; /* Take full width */
+  max-width: 1200px; /* Limit maximum width */
+  margin: 20px auto; /* Center the whole analysis container */
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.predictions-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  /* background-color: #f5f5f5; */ /* Removed redundant background color */
+  /* min-height: 100vh; */ /* Removed redundant min-height */
+}
+
+.chart-container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 100px; /* Increased margin for more gap */
+  width: 90%; /* Adjust width for better responsiveness */
+  max-width: 1000px;
+  height: 400px;
+}
+
+.chart-container h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.chart-guidance {
+  text-align: center;
+  color: #777;
+  margin-bottom: 20px;
+}

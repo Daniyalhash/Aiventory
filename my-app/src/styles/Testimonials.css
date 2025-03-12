@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');
+
+.Testimonials-section{
+    height: 110vh;
+    background-color: #FFFFFF;
+
+}
+.Testimonials-container {
+    position: relative; 
+    
+    height: 100%; /* Ensure the container uses full height */
+    overflow: hidden; /* Prevents overflow */
+  }
+  .Testimonials-heading-main{
+    padding: 4rem;
+  }
+  .Testimonials-heading {
+
+    font-size: 64px; /* 40px */
+    font-weight: 400;
+    text-align: left;
+  }
+  
+  .Testimonials-highlight {
+    color: #70D560; /* green */
+    
+  }
+  
+  .Testimonials-bold {
+    font-weight: bold;
+    color: black;
+    color: #70D560;
+    font-size: 80px;
+    font-family: 'Silkscreen', cursive;
+
+  }
+  
+  .testimonials {
+    display: flex;
+    justify-content: left;
+    margin-top: -2rem; /* 32px */
+    gap: 1rem; /* 24px */
+    padding: 50px;
+  }
+  
+  .testimonial {
+    max-width: 19rem; /* 320px */
+    text-align: center;
+    margin-left: 40px;
+
+  }
+  
+  .testimonial-image {
+    border-end-start-radius: 2rem; /* 8px */
+    margin-bottom: 1rem; /* 16px */
+  }
+  
+  .testimonial-text {
+    margin-top: 1rem; /* 16px */
+    color: #2E2A2A; /* dark gray */
+  }
+  
+  .star {
+    position: absolute;
+    top: -200;
+    right: -200;
+    z-index: 1;
+  }

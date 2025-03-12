@@ -1,0 +1,44 @@
+* {
+
+  font-family: 'Poppins',sans-serif;
+}
+
+.section{
+    padding: 10px 50px;
+    
+    
+  }
+
+  
+.Backsettings {
+  display: flex;
+  align-items: center;
+  color: #5a5a5a;
+  text-decoration: none;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.EPicon {
+  margin-right: 8px;
+  font-size: 16px;
+}
+
+  .secHead {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    font-size: 40px;
+    color: #17412D;
+    /* Reduce line height to bring subheading closer */
+    line-height: 1.2;
+    margin-bottom: 10px; /* Add margin to create space between headings */
+  }
+  
+  .secSubhead {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    color: #333;
+    /* Reduce line height to bring it closer to the main heading */
+    line-height: 1.3;
+  }

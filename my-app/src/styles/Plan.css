@@ -1,0 +1,144 @@
+/* Plan.css */
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #70D560; /* Tailwind green-400 */
+    padding: 24px;
+}
+
+.title {
+    font-size: 48px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 19px;
+    margin-top: 8px;
+}
+.plan-section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 2rem;
+    padding: 24px;
+}
+.plan-features {
+    margin-top: 34px;
+    background-color: white;
+    padding: 24px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 600px;
+    height: 200px;
+    min-height: 150px;
+    overflow: hidden;
+    transition: all 0.5s ease-in-out; /* Smooth transition */
+}
+.features-wrapper {
+    transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out, padding 0.5s ease-in-out;
+    overflow: hidden;
+    opacity: 1;
+}
+.features-wrapper.hidden {
+    max-height: 0;
+    opacity: 0;
+    padding: 0;
+}
+.feature-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 20px;
+}
+
+.plan-selection {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    width: 600px;
+
+}
+
+.plan-option {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 500px;
+    padding: 16px;
+    border-radius: 8px;
+    background-color: #70D560;
+    border: 2px solid black;
+    transition: background-color 0.3s ease, border-color 0.3s ease, font-weight 0.3s ease;
+
+}
+
+.plan-option.selected {
+    border-color: black;
+    font-weight: bold;
+
+    background-color: white;
+}
+.font-bold.selected{
+    font-weight: bold;
+
+}
+.font-semibold.selected{
+    font-weight: bold;
+
+}
+.radio-button {
+    width: 20px;
+    height: 20px;
+    border: 2px solid black;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.radio-button.selected {
+    background-color: black;
+}
+
+.choose-button {
+    margin-top: 24px;
+    cursor: pointer;
+    padding: 12px 24px;
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    border-radius: 50px;
+    font-weight: lighter;
+    border: none;
+}
+.plan-option.selected, .plan-option.selected .font-bold, .plan-option.selected .font-semibold {
+    font-weight: bold;
+}
+.plan-selection-1{
+display: flex;
+align-items: center;
+gap: 1rem;
+}
+.plan-selection-2{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.font-semibold{
+    font-weight: 400;
+    font-size: 20px;
+}
+.font-bold{
+font-size: 30px;
+}

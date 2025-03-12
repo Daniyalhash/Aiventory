@@ -1,0 +1,267 @@
+
+* {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Card container with flexbox to arrange cards in the same line */
+.cardSection {
+  display: flex;
+  flex-wrap: wrap; /* Allows wrapping when there is not enough space */
+  gap: 20px; /* Space between cards */
+  padding: 10px 50px;
+  max-width: 100%;
+
+  justify-content: space-between; /* Space between cards */
+}
+
+/* Card styling */
+.card {
+  position: relative;
+  background: #9FE870; /* Green background */
+  border-radius: 16px; /* Overall border radius */
+  padding: 20px;
+  max-width: 600px;
+  height: 180px;
+  color: #041900;
+  overflow: hidden;
+  font-family: "Arial", sans-serif;
+  flex: 1 1 calc(33% - 20px); /* Makes cards flexible but ensures they stay within a 3-column layout */
+  min-width: 250px; /* Minimum width for cards */
+  box-sizing: border-box;
+}
+
+/* Top-right corner styling */
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 80px;
+  height: 80px;
+  background: #f3f4f6; /* White corner */
+  border-radius: 0 16px 0 0; /* Top-right corner rounded */
+  z-index: 0;
+}
+
+/* Overlapping background shapes */
+.card::after {
+  content: "";
+  position: absolute;
+  top: 70px;
+  left: -30px;
+  width: 00px;
+  height: 200px;
+  background: rgba(0, 0, 0, 0.05); /* Slightly darker overlay */
+  transform: rotate(-30deg);
+  border-radius: 20px;
+  z-index: 0;
+}
+.cardContent{
+  
+}
+/* Text styling */
+.cardTitle {
+  font-size: 25px;
+  color: #17412D;
+  font-weight: bold;
+  padding-top: 10px;
+  z-index: 2;
+  position: relative;
+}
+
+.cardDescription {
+  font-size: 18px;
+  color: #17412D;
+  margin: 10px 0 5px;
+  z-index: 2;
+  position: relative;
+}
+
+.cardValue {
+  font-size: 50px;
+  font-weight: bold;
+  color: #17412D;
+  margin: 0;
+  z-index: 2;
+  position: relative;
+}
+
+/* Arrow button (top-right corner) */
+.iconArrow {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #ffffff; /* White background */
+  color: #17412D; /* Black arrow */
+  border: none;
+  border-radius: 50%;
+  width: 60px;  /* Increased width */
+  height: 60px;  /* Increased height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  rotate: 330deg;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for better visibility */
+  z-index: 3;
+  font-size: 30px; /* Increase font size for the arrow */
+}
+
+.iconArrow:hover {
+  background: #17412D;
+  color: #fff;
+  transition: 0.3s ease;
+}
+ .promotion{
+  padding: .4rem 1rem;
+    background-color: #17412D;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    width: auto;
+    cursor: pointer;
+    border-radius: 50px;
+    position: absolute;
+    top: 8rem;
+    right: 1.5rem;
+     /* Linear gradient border */
+     border: 1px solid #70D560; /* Transparent initial border */
+
+  
+     /* Smooth transition on hover */
+     transition: all 0.3s ease-in-out;
+ }
+
+/* Graph inside the card */
+.graphSection {
+  width: 100%;
+  height: 250px; /* Adjust the height of the graph */
+  margin-top: 20px;
+  border-radius: 10px; /* Rounded corners for the graph */
+  background-color: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Optional: adds some shadow for better contrast */
+}
+
+/* Ensure graph container is responsive */
+.graphContainer {
+  width: 100%;
+  height: 100%;
+}
+
+/* Styling for the new card */
+.card.bg-gray-100 {
+  background-color: #f3f4f6; /* Light gray background */
+  border-radius: 16px;
+  padding: 20px;
+  max-width: 800px;
+  height: auto;
+  color: #000;
+  overflow: hidden;
+  font-family: "Arial", sans-serif;
+  margin-bottom: 20px; /* Add space between cards */
+}
+
+
+/* Media query for smaller screens */
+@media screen and (max-width: 768px) {
+  .card {
+    flex: 1 1 calc(50% - 20px); /* Two cards per row on smaller screens */
+    height: auto; /* Allow height to adjust based on content */
+  }
+
+  .cardTitle {
+    font-size: 22px; /* Reduce title font size */
+  }
+
+  .cardDescription {
+    font-size: 16px; /* Reduce description font size */
+  }
+
+  .cardValue {
+    font-size: 40px; /* Reduce value font size */
+  }
+
+  .iconArrow {
+    width: 50px; /* Smaller button */
+    height: 50px; /* Smaller button */
+    font-size: 24px; /* Smaller font size for arrow */
+  }
+
+  .graphSection {
+    height: 200px; /* Reduce graph size */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .card {
+    flex: 1 1 100%; /* One card per row on very small screens */
+    height: auto; /* Adjust height for mobile */
+  }
+
+  .cardTitle {
+    font-size: 20px; /* Further reduce title font size */
+  }
+
+  .cardDescription {
+    font-size: 14px; /* Further reduce description font size */
+  }
+
+  .cardValue {
+    font-size: 36px; /* Further reduce value font size */
+  }
+
+  .iconArrow {
+    width: 45px; /* Further reduce button size */
+    height: 45px; /* Further reduce button size */
+    font-size: 20px; /* Further reduce arrow font size */
+  }
+
+  .graphSection {
+    height: 180px; /* Further reduce graph size */
+  }
+}
+
+/* Graph inside the card */
+.graphSection {
+  width: 100%;
+  height: 250px; /* Adjust the height of the graph */
+  margin-top: 20px;
+  border-radius: 10px; /* Rounded corners for the graph */
+  background-color: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Optional: adds some shadow for better contrast */
+}
+
+/* Ensure graph container is responsive */
+.graphContainer {
+  width: 100%;
+  height: 100%;
+}
+
+/* Styling for the new card */
+.card.bg-gray-100 {
+  background-color: #f3f4f6; /* Light gray background */
+  border-radius: 16px;
+  padding: 20px;
+  max-width: 800px;
+  height: auto;
+  color: #000;
+  overflow: hidden;
+  font-family: "Arial", sans-serif;
+  margin-bottom: 20px; /* Add space between cards */
+}
+
+/* Media queries for smaller screens */
+@media screen and (max-width: 768px) {
+  .card.bg-gray-100 {
+    padding: 15px; /* Reduce padding for smaller screens */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .card.bg-gray-100 {
+    padding: 10px; /* Further reduce padding for mobile */
+  }
+}

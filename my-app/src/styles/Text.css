@@ -1,0 +1,48 @@
+.text-section{
+    height: 100vh;
+    background-color: #FFFFFF;
+
+}
+.text-container {
+    position: relative; 
+    display: flex; /* Enables flexbox */
+    align-items: center; /* Vertical center */
+    justify-content: center; /* Horizontal center */
+    height: 100%; /* Ensure the container uses full height */
+    overflow: hidden; /* Prevents overflow */
+
+}
+  
+  .outlined-text {
+    
+    position: absolute;
+    font-size: 750px; 
+    font-weight: bold;
+    color: white; /* Make text transparent */
+    -webkit-text-stroke: 1px #17412D; /* Green stroke */
+   
+    z-index: 3;  
+
+ }
+  
+ .main-text {
+    position: relative; /* Positioned relative to container */
+    z-index: 2; /* Rearranged z-index to be above outined text */
+    color: #17412D; /* Set text color to white */
+    font-size: 14vw; /* Responsive font size */
+    font-weight: bold;
+    text-align: center; /* Center-align text */
+    line-height: .8; /* Adjust line height */
+    -webkit-text-stroke: 1.5px #17412D; /* White border for main text */
+}
+  .main-text-2 {
+    position: absolute; /* Positioned relative to container */
+    z-index: 4; /* Bring text above outlined text */
+    color: transparent; /* Green color for the main text */
+    font-size: 14vw; /* Responsive font size */
+    font-weight: bold;
+    text-align: center; /* Center-align text */
+    line-height: .8; /* Adjust line height */
+    -webkit-text-stroke: 1.5px #17412D; /* White border */
+
+  }

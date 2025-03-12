@@ -1,0 +1,16 @@
+.setting-page {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: #F8F8F8;
+}
+*{
+  font-family: 'Poppins',sans-serif;
+}
+
+.listOptions {
+  padding: 10px 50px;
+
+  
+ 
+}

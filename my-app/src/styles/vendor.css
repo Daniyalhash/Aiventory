@@ -1,0 +1,42 @@
+.VendorPage {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: #F8F8F8;
+  }
+  *{
+    font-family: 'Poppins',sans-serif;
+  }
+  .actionContainerVendor2 {
+    padding: 10px 50px;
+  
+    border-radius: 8px;
+    
+   
+  }
+  
+  .dataset-feature2 {
+    padding: 10px 50px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+  }
+  .visual-feature2{
+    padding: 10px 50px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+  }
+  
+  /* Example Gemini loading animation */
+.loadingAnimation {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(45deg, #ffb3b3, #c7a2ff);
+  animation: gemini 1.5s infinite ease-in-out;
+}
+
+@keyframes gemini {
+  0% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.5; }
+}

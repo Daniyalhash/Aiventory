@@ -1,0 +1,457 @@
+/* styles/ProductBenchmarkSection.css */
+.ProductBenchmarkSection {
+    display: flex; /* Use flexbox for layout */
+    height: 100vh;
+    border-radius: 20px; /* Reduced border radius */
+    padding: 20px; /* Add some padding */
+    gap: 20px; /* Add gap between sections */
+    overflow: hidden;
+}
+
+.ProductLeftSection {
+    flex: 1; /* Takes up available space */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    grid-template-rows: auto auto; /* Adjust rows as needed */
+    gap:20px;
+        border-radius: 20px; /* Reduced border radius */
+
+
+}
+
+.visual-box {
+    border: 1px solid #ccc;
+    padding: 10px;
+    color: #f9f9f9;
+    border-radius: 10px;
+}
+.visual-box.big h3{
+    color: #333;
+    font-family: 'Poppins',sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+}
+.visual-box.big {
+    grid-column: 1 / -1; /* Spans both columns */
+    height: 300px; /* Example height */
+    background-color: #70D560;
+    display: block;
+    overflow: hidden;
+padding: auto;
+    /* Adjustments to move content to the left */
+}
+.bigDetails{
+   padding: 10px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+.bigheader-actions{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.bigrange-dropdown{
+    padding: 10px 10px;
+    border-radius: 50px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: border-color 0.3s ease;
+    font-size: 15px;
+    border: 1px solid #17412D;
+
+}
+
+.chartsDetails{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto 0;
+    height: 80%;
+}
+.visual-box.medium {
+    height: 410px;
+    width: 400px;
+    border: none;  /* Slight light background for the box */
+    border-radius: 10px;
+    border: 1px solid #17412D;
+    overflow: hidden;
+}
+
+.mediumHead {
+    padding: 10px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+
+
+}
+.charts{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto 0;
+    height: auto;
+}
+.visual-box h3 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 300;
+    color: #333;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+
+
+
+.range-dropdown {
+    padding: 10px 10px;
+    border-radius: 50px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: border-color 0.3s ease;
+    font-size: 15px;
+    border: 1px solid #17412D;
+}
+
+.range-dropdown:focus {
+    border-color: #4CAF50;
+}
+
+.visual-box.small .SmallHead {
+    text-align: left; /* Aligns the header text to the left */
+    justify-content: flex-start; /* Ensures alignment consistency */
+    font-weight: bold; /* Makes the header bold */
+    font-size: 15px; /* Adjusts font size for better visibility */
+    color: #333333; /* A dark, elegant black shade for header */
+    margin-bottom: 10px; /* Adds space below the header */
+}
+.ProductLeftSectionSub{
+    
+    grid-template-columns: repeat(1, 1fr); /* 2 columns */
+    gap: 10px;
+    grid-template-rows: auto auto; /* Adjust rows as needed */
+    flex: 1; /* Takes up available space */
+    display: grid;
+    height: 430px;
+  
+    
+
+}
+.ProductLeftSectionSub .visual-box.small {
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #A9E6A0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Aligns content to the left */
+    justify-content: flex-start;
+    overflow: hidden;
+   
+}
+.ProductLeftSectionSub .visual-box.smallsub {
+    padding: 10px;
+    border: 1px solid #4CAF50;
+    background-color:#326D3C;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Aligns content to the left */
+    justify-content: flex-start;
+    overflow: hidden;
+    border: 2px solid #4CAF50;
+   
+}
+.stock-details {
+    margin-top: 0px;
+    text-align: left; /* Aligns all stock details to the left */
+    width: 100%;
+    
+}
+
+.stock-details p {
+    margin: 5px 0;
+    text-align: center;
+    font-weight: lighter; /* Light font weight for normal text */
+    font-size: 18px; /* Slightly larger font size for readability */
+    color: #555555; /* A lighter gray for less emphasis */
+}
+
+.strong1 {
+    font-size: 50px; /* Makes the number standout */
+    font-weight: bold; /* Ensures bold text */
+    color: #141414; /* A deep black shade for emphasis */
+}
+
+.ProductLeftSectionSub .visual-box.smallsub.vendor-details {
+    margin-top: -10px;
+    text-align: center;
+    width: 100%;
+    color: whitesmoke;
+
+}
+
+.SmallHead2 {
+    text-align: left;
+    font-weight: bold;
+    font-size: 18px;
+    color: whitesmoke;
+    margin-bottom: 10px;
+}
+
+.vendor-details {
+    text-align: left;
+    width: 100%; /* Or a specific width if needed */
+    /* Align content to the left */
+}
+.vendor-name-0 {
+    font-size: 15px;
+    font-weight: 300;
+    text-align: left;
+    margin-bottom: 10px;
+    white-space: nowrap; /* Prevent text from wrapping */
+    /* Add "..." if text is too long */
+    color: whitesmoke;
+    word-wrap: break-word; /* Important for long words */
+    overflow-wrap: break-word;
+}
+
+.vendor-name {
+    font-size: 18px;
+    text-decoration: underline;
+    font-weight: 600;
+    text-align: left;
+    margin-bottom: 10px;
+    white-space: nowrap; /* Prevent text from wrapping */
+    /* Add "..." if text is too long */
+    color: whitesmoke;
+    word-wrap: break-word; /* Important for long words */
+    overflow-wrap: break-word;
+}
+
+.score-and-time {
+    display: flex; /* Arrange items in a row */
+    gap: 20px; /* Add space between items */
+    margin-bottom: 5px; /* Space below the row */
+    align-items: center; /* Align text and numbers */
+    flex-wrap:nowrap; /* Allow wrapping on smaller screens */
+}
+
+.strong2 {
+    font-size: 30px; /* Stand-out font size */
+    font-weight: bold;
+    color: #f9f9f9; /* Green color for emphasis */
+}
+
+.score-label {
+    font-size: 14px; /* Smaller, subtle font */
+    font-weight: 500;
+    color: whitesmoke;
+}
+
+/* rigth section */
+.ProductRightSection {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #17412D;
+    border-radius: 20px;
+    gap: 20px; /* Adjusted for better spacing */
+    padding: 20px; /* Added padding to the container */
+    background-color: #f9f9f9; /* Light background for better readability */
+}
+
+.ProductRightSubPart1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0; /* Ensures no gap between buttons */
+}
+
+.ProductRightSubPart1 button {
+    padding: 10px 20px;
+    margin: 0;
+    font-size: 18px;
+    border: 1px solid #4CAF50;
+    cursor: pointer;
+    background-color: #eee;
+border-radius: 50px;
+    transition: all 0.3s ease-in-out;
+}
+
+.productSuggestionsText{
+    color: gray;
+    font-style: italic;
+}
+.ProductRightSubPart1 button.right-button {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+
+.ProductRightSubPart1 button.active {
+    background-color: #136a3e;
+    color: white;
+}
+
+.ProductRightSubPart1 button.active.right-button {
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+
+.ProductRightSubPart1 button:hover {
+    background-color: #136a3e;
+}
+
+.comparison-parameters {
+    border: 1px solid #ccc;
+    padding: 15px; /* Increased padding for better spacing */
+    border-radius: 10px;
+    background-color: #fff;
+}
+/* styles/ProductBenchmarkSection.css */
+.productSuggestions {
+    padding: 15px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap; /* This is the key! */
+    gap: 10px; /* Add some spacing between items */
+    justify-content: flex-start; /* Align items to the left */
+}
+
+.suggestionAnswer {
+    display: flex;
+    justify-content: space-between; /* Distribute space between text and icon */
+    align-items: center;
+    border: 1px solid #70D560;
+    border-radius: 50px;
+    height: 30px;
+    cursor: pointer;
+    padding:10px; /* Add some padding to the sides */
+    flex-grow:0; /* Allow items to grow to fill available space */
+    min-width: 0; /* Important to prevent content overflow */
+}
+
+.suggestionAnswer p {
+    font-size: 14px;
+    font-weight: 300;
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide overflowing text */
+    text-overflow: ellipsis; /* Add ellipsis (...) for overflow */
+}
+
+.suggestionAnswer:hover {
+    transition: .3s all ease;
+    border: 1px solid #136a3e;
+}
+
+.suggestedIcon {
+    margin-left: 5px; /* Add some space between text and icon */
+}
+.comparison-parameters h3{
+    color: #136a3e;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+}
+.comparison-parameters select,
+.comparison-parameters input {
+    display: block;
+    margin-bottom: 15px;
+    width: 95%;
+    padding: 12px; /* Increased padding for larger click area */
+    font-size: 16px; /* Increased font size for readability */
+    box-sizing: border-box;
+    border: 1px solid #ddd; /* Subtle border for inputs */
+    border-radius: 5px;
+    background-color: #f5f5f5;
+}
+
+.comparison-parameters button {
+    display: block;
+    width: 100%; /* Full width button for submission */
+    padding: 12px;
+    font-size: 18px; /* Bold and larger text */
+    border: none;
+    background-color: #17412D;
+    color: white;
+    cursor: pointer;
+    border-radius: 50px;
+    margin-top: auto; /* Pushes button to the bottom */
+    transition: all 0.3s ease-in-out; /* Smooth hover transition */
+}
+
+.comparison-parameters button:hover {
+    background-color: #136a3e; /* Darker green on hover */
+}
+
+
+.color{
+    color: #17412D;
+    color: #70D560;
+    color: #326D3C; 
+    /* dark color refer white */
+        /* light color refer dark */
+
+    color: #A9E6A0;
+}
+/* Example Gemini loading animation */
+.loadingAnimation {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(45deg, #136a3e, #4CAF50);
+    animation: gemini 1.5s infinite ease-in-out;
+  }
+  
+  @keyframes gemini {
+    0% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(1); opacity: 0.5; }
+  }
+/* Add this to your CSS file */
+.imagePlaceholder {
+    position: relative;     /* Center vertically */
+    width: 100%;
+    height: 100%;
+    left:220px;
+    top: 265;
+}
+
+.moving-image {
+    width: 150px; /* Set image size as needed */
+    animation: spinWheel 5s linear infinite; /* Animation name, duration, easing, infinite loop */
+}
+.moving-text{
+    position: relative;
+    right: 100px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    
+    background: linear-gradient(45deg, #136a3e, #17412D, #4CAF50, #ccc); /* Multiple shades of gray */
+    background-size: 200% 200%;
+    color: transparent;
+    -webkit-background-clip: text; /* Clip the background to the text */
+    animation: shineEffect 3s ease-in-out infinite; /* Animation for shining effect */
+}
+/* Define the spinning animation for the image */
+@keyframes spinWheel {
+    0% {
+        transform: rotate(0deg); /* Start at 0 degrees */
+    }
+    100% {
+        transform: rotate(360deg); /* End at 360 degrees (full rotation) */
+    }
+}
+.error-msg {
+    color: red;
+    /* Add any other styling you want for the error message */
+   
+    text-align: center;
+}

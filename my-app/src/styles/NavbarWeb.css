@@ -1,0 +1,93 @@
+/* Navbar container */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  font-family: 'Poppins',sans-serif;
+
+}
+
+body { /* Or a more specific selector */
+  font-family: 'Poppins', sans-serif;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* background: #70D560; */
+  padding: 1rem 2rem;
+  height: 90px;
+}
+
+/* Logo */
+.logo{
+  padding: 1.5rem;
+  cursor: pointer;
+}
+.logo .logImg {
+  width: 100px;
+  height: 40px;
+}
+
+/* Navigation links container */
+.menu {
+  display: flex;
+  justify-content: center; /* Centers items horizontally */
+  align-items: center; /* Centers items vertically */
+  gap: 1rem;
+  border-radius: 50px;
+  height: 60px; /* Adjusted height */
+}
+
+
+/* Navigation links */
+.menu a {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400; /* Light font style */
+  text-decoration: none;
+  color: #000000;
+  font-size: 1.2rem;
+  align-items: center; /* Vertically centers items */
+
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+.authButtons {
+  display: flex;
+  gap: 10px;
+}
+
+.signUp {
+  padding: 8px 30px;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-size: 1.2rem;
+
+  background: transparent;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.5); /* Semi-transparent background */
+  backdrop-filter: blur(30px); /* Adjust the blur amount as needed */
+  border-radius: 50px;
+}
+
+.logIn {
+  background: black;
+  padding: 8px 30px;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  color: azure;
+  cursor: pointer;
+  border-radius: 50px;
+}
+.icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+
+

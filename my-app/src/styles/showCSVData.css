@@ -1,0 +1,35 @@
+.csv-table-container {
+  margin: 20px auto;
+  max-height: 400px; /* Set your desired height */
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+  
+  .csv-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    margin: 20px 0;
+  }
+  
+  .csv-table th,
+  .csv-table td {
+    border: 1px solid #ddd; /* Adds a border to the cells */
+    text-align: left;
+    padding: 8px;
+  }
+  
+  .csv-table th {
+    background-color: #f4f4f4; /* Light background for the headers */
+    font-weight: bold;
+  }
+  
+  .csv-table tr:nth-child(even) {
+    background-color: #f9f9f9; /* Alternating row colors for better readability */
+  }
+  
+  .csv-table tr:hover {
+    background-color: #eaeaea; /* Highlight rows on hover */
+  }
+  

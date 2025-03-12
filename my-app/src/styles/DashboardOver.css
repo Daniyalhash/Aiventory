@@ -1,0 +1,59 @@
+/* General Section Styling */
+.section {
+  padding: 10px 50px;
+}
+
+/* Main Heading Styling */
+.secHead {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: 35px;
+  color: #17412D;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+
+/* Subheading Styling */
+.secSubhead {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #333;
+  line-height: 1.3;
+}
+
+/* Media Queries for Responsiveness */
+
+/* For screens smaller than 768px (tablets and smaller devices) */
+@media screen and (max-width: 768px) {
+  .secHead {
+    font-size: 30px; /* Reduce font size for smaller devices */
+    margin-bottom: 8px; /* Slightly reduce margin */
+  }
+
+  .secSubhead {
+    font-size: 18px; /* Adjust font size for subheading */
+    line-height: 1.4; /* Adjust line height */
+  }
+
+  .section {
+    padding: 10px 30px; /* Adjust padding for smaller devices */
+  }
+}
+
+/* For screens smaller than 480px (mobile phones) */
+@media screen and (max-width: 480px) {
+  .secHead {
+    font-size: 24px; /* Further reduce font size for mobile */
+    margin-bottom: 6px; /* Reduce margin for mobile */
+  }
+
+  .secSubhead {
+    font-size: 16px; /* Adjust font size for mobile */
+    line-height: 1.5; /* Increase line height for readability */
+  }
+
+  .section {
+    padding: 10px 15px; /* Further reduce padding for mobile */
+  }
+}

@@ -1,0 +1,40 @@
+.customButton {
+    display: flex;
+    
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    color: black;
+    border: .3px solid #70D560;
+    border-radius: 25px;
+    padding: 10px 15px;
+      /* padding: 10px 50px; */
+
+    margin: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    font-family: "Poppins", sans-serif;
+
+  }
+  /* 70D560 */
+  .customButton:hover {
+    background-color: #17412D;
+    color: white;
+  }
+  
+  .customButton:disabled,
+  .disabledButton {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .buttonIcon {
+    margin-right: 5px;
+    font-size: 18px;
+  }
+  
+  .buttonText {
+    font-size: 16px;
+  }
+  

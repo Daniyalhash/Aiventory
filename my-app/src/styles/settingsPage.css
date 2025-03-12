@@ -1,0 +1,129 @@
+/* General Page Styling */
+.setting-page {
+    background-color: #f9f9f9;
+    font-family: 'Arial', sans-serif;
+    min-height: 100vh;
+    
+  }
+  *{
+    font-family: 'Poppins',sans-serif;
+  }
+  .setting-page h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  /* Settings List */
+  .settingslist {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+ 
+  .settingsitem {
+    margin-bottom: 15px;
+  }
+  
+  .settingslink {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Push the arrow to the end */
+    text-decoration: none;
+    color: #333;
+    background: #fff;
+    padding: 15px 45px;
+    border-radius: 50px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .settingslink2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Push the arrow to the end */
+    text-decoration: none;
+    color: #f9f9f9;
+    background: red;
+    padding: 15px 45px;
+    border-radius: 50px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .arrow-icon {
+    font-size: 1rem;
+    color: #333; /* Match arrow color to the link */
+    transition: color 0.2s ease;
+  }
+  .settingslink2:hover .arrow-icon {
+    color: #f9f9f9; /* Match arrow hover color to the link hover color */
+  }
+  .settingslink:hover .arrow-icon {
+    color: #f9f9f9; /* Match arrow hover color to the link hover color */
+  }
+  .settingslink:hover {
+    transform: translateY(-3px);
+    font-weight: 600;
+    background-color: #17412d;
+    color: #f9f9f9;
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  .settingslink2:hover {
+    transform: translateY(-3px);
+    font-weight: 600;
+    background-color: #fff;
+    color: red;
+    transition: all 0.1s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .settingslink span {
+    margin-left: 15px;
+    font-size: 1.1rem;
+   
+    font-weight: 500;
+  }
+  
+  .settingslink2 span {
+    margin-left: 15px;
+    font-size: 1.1rem;
+   
+    font-weight: 500;
+  }
+  .settingsicon {
+    font-size: 1.5rem;
+  }
+  .logout-button{
+    display: flex;
+    align-items: center;
+    justify-content: end; /* Push the arrow to the end */
+    text-decoration: none;
+    color: #333;
+    background: transparent;
+    padding: 15px 0px;
+
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  /* Mobile Responsiveness */
+  @media (max-width: 768px) {
+    .settings-page {
+      padding: 15px;
+    }
+  
+    .settings-page h2 {
+      font-size: 1.8rem;
+    }
+  
+    .settingslink {
+      padding: 10px 15px;
+    }
+  
+    .settingslink span {
+      font-size: 1rem;
+    }
+  
+    .settingslink svg {
+      font-size: 1.3rem;
+    }
+  }
+  

@@ -1,0 +1,110 @@
+/* InventoryDashboard.css */
+.inventory-dashboard {
+    font-family: sans-serif; /* Use a suitable font */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure full viewport height */
+  }
+  
+  header {
+    background-color: #fff; /* White background for header */
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+  
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .logo {
+    height: 40px; /* Adjust logo size */
+  }
+  
+  nav {
+    display: flex;
+    gap: 20px;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: #333; /* Dark gray text */
+  }
+  
+  .auth-buttons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .signup-button,
+  .login-button {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .signup-button {
+    background-color: #007bff; /* Example blue color */
+    color: #fff;
+    border-radius: 5px;
+  }
+  
+  .login-button {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .hero {
+    background-color: #90ee90; /* Light green background */
+    padding: 100px 0;
+    text-align: center;
+    position: relative; /* Needed for vector positioning */
+    overflow: hidden; /* Hide any vector overflow */
+  }
+  
+  .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .hero h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+  }
+  
+  .get-started-button {
+    padding: 15px 30px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    font-size: 1.2em;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .vector-graphic {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1; /* Place behind the text */
+  }
+  .dashboard-image-container{
+      background-color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 50px;
+  }
+  .dashboard-image{
+      background-color: lightgray;
+      width: 80%;
+      height: 500px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  
+  }

@@ -1,0 +1,157 @@
+.Help {
+   border:1px solid orange;
+   border-radius: 40px;
+   background-color: green;
+     /* rounded-t-3xl */
+      
+    }
+    .Help-images{
+      position: relative;
+      left: 750px;
+    }
+    .star-icon {
+      position: absolute;
+      top: 100;
+      right: 100px;
+      z-index: 2;
+    }
+    .star-icon-2 {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+    .Help-heading{
+      margin-top: 100px;
+  
+      display: flex;
+      justify-content: left;
+       margin-right: 700px;
+    }
+    .Help-title {
+      font-size: 64px; /* text-3xl */
+      font-weight: bold; /* font-bold */
+    }
+    .Help-subHeading{
+      margin-right: -500px;
+      margin-top: 30px
+    }
+    .Help-subHeading a {
+      color: black;
+      padding: 10px 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 40px;
+      font-family: "Poppins",sans-serif;
+      font-weight: 300;
+      text-decoration: underline; /* Added underline */
+      text-underline-offset: 15px; /* Change this value for more or less gap */
+  
+      font-variant: underline;
+  }
+  
+  .Help-subHeading .arrow-icon {
+      border: 2px solid black; /* Thinner border */
+      border-radius: 100%; /* Keep the same */
+      padding: 10px; /* Reduced padding */
+      transform: rotate(35deg) translateX(10px);
+  }
+  
+  
+   
+    .Help-section{
+      display: flex;
+      align-items: center;
+      width: 100%;
+      justify-content:center;
+    }
+    .Help-section-heading{
+      display: flex;
+      align-items: center;
+      margin-right: 700px;
+      justify-content: center;
+    }
+    .Help-brand{
+      font-family: 'Silkscreen', cursive;
+      color: black;
+      font-weight: bold;
+      font-size: 60px;
+    }
+    .Help-brandSub{
+      font-size: 30px;
+      color: black;
+      font-family: 'Poppins', sans-serif; /* Apply Poppins as the default font */
+    }
+    .Help-links {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* grid-cols-3 */
+      gap: 4rem; /* gap-8 */
+      margin-top: 2.5rem; /* mt-6 */
+      text-align: center;
+    }
+    
+    .link-title {
+      font-weight: bold;
+      font-size: 25px; /* font-bold */
+    }
+    
+    .link-list {
+      cursor: pointer;
+      list-style-type: none; /* Remove bullet points */
+      padding: 0; 
+      font-size: 20px; /* font-bold */
+      /* Remove padding */
+    }
+    .link-list a{
+      cursor: pointer;
+      list-style-type: none; /* Remove bullet points */
+      padding: 0; 
+      font-size: 20px; /* font-bold */
+      text-decoration: none;
+      color: black;
+    }
+    .link-list li:hover{
+      text-decoration: underline;
+      transition: All 0.6s ease;
+  
+    }
+    
+    .social-buttons {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end; /* Aligns icons to the right */
+      gap: 2rem; /* gap-4 */
+      margin-top: 2.5rem; /* mt-6 */
+      width: 100%;
+    }
+    
+    .store-button {
+      display: flex;
+      align-items: center;
+      gap: 1rem; /* gap-2 */
+      background-color: white;
+      justify-content: center;
+      cursor: pointer;
+      color: black;
+      font-size: 20px;
+      padding: 0.5rem 1rem; /* px-4 py-2 */
+      border-radius: 9999px; /* rounded-full */
+      
+    }
+    
+   .iconDiv{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   }
+    .icon {
+      cursor: pointer;
+  
+      padding: 10px;
+      border-radius: 50%;
+      border: 1px solid black;
+    }

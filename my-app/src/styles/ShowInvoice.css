@@ -1,0 +1,80 @@
+/* styles/ShowInvoice.css */
+.invoice-section {
+    padding: 20px;
+    background-color: #f8f8f8; /* Light background */
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;
+    min-height: 50vh;
+}
+
+.invoice-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 12000px; /* Adjust as needed */
+   
+}
+
+.invoice-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.create-invoice-button {
+    background-color: #3b82f6; /* Example blue color */
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.invoice-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+}
+
+.invoice-table th,
+.invoice-table td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.status {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 20px;
+    font-weight: bold;
+    display: inline-block; /* Make it behave like an inline element */
+}
+
+.status.paid {
+    background-color: #4CAF50; /* Green */
+    color: white;
+}
+
+.status.unpaid {
+    background-color: #f44336; /* Red */
+    color: white;
+}
+.view-action{
+    color: blue;
+    cursor: pointer;
+}
+
+.color{
+    color: #17412D;
+    color: #70D560;
+    color: #326D3C; 
+    /* dark color refer white */
+        /* light color refer dark */
+
+    color: #A9E6A0;
+}

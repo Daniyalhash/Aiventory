@@ -1,0 +1,23 @@
+.Laptop-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem 0;
+    height: 90vh;
+    position: relative; /* Added for absolute positioning of video */
+    background-color: #FFFFFF;
+
+}
+
+.laptop-image {
+    position: absolute; /* Allow video to overlay on the laptop image */
+    z-index: 1; /* Ensure laptop image is below video */
+}
+
+.laptop-video {
+    position: absolute; /* Positioning the video on top of the laptop image */
+    top: 140px; /* Adjust according to your design */
+    left: 340px; /* Adjust according to your design */
+    z-index: 2; /* Ensure video is on top */
+    border-radius: 30px; /* Optional: for rounded corners */
+}

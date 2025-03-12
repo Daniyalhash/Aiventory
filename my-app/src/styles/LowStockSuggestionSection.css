@@ -1,0 +1,114 @@
+.LowStockSuggestionSection {
+    display: flex; /* Use flexbox for layout */
+    height: 100vh;
+    border-radius: 20px; /* Reduced border radius */
+    padding: 20px; /* Add some padding */
+    gap: 20px; /* Add gap between sections */
+    overflow: hidden;
+    border: 2px solid #17412D;
+
+}
+
+
+  .low-stock-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  .low-stock-table th,
+  .low-stock-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .vendor-suggestions-container {
+    margin-top: 20px; /* Space between table and suggestions */
+  }
+  
+  .chart-container {
+      width: 300px; /* Set width of the chart */
+      height: 200px; /* Set height of the chart */
+      margin: 10px auto; /* Center the chart */
+  }
+  
+  .vendor-suggestions-wrapper {
+    display: flex;
+    flex-wrap: wrap; /* Allow cards to wrap to the next line */
+    gap: 10px; /* Space between cards */
+    margin-top: 10px;
+  }
+  
+  .vendor-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative; /* For absolute positioning of close button */
+    width: calc(33.33% - 10px); /* Adjust width as needed for number of cards per row */
+    min-width: 200px; /* Minimum width of the card */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+  }
+  
+  .vendor-card h4 {
+    margin-top: 0; /* Remove default margin from h4 */
+  }
+  
+  .close-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #ccc;
+    font-size: 1.2rem;
+  }
+  
+  .close-btn:hover {
+    color: #888;
+  }
+ /* styles/your-styles.css (or in a styled-components file) */
+.search-container {
+  display: flex;
+  align-items: center; /* Vertically center the input and icon */
+  border: 1px solid #ccc; /* Light gray border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 5px; /* Internal padding */
+  width: 300px; /* Adjust as needed */
+  margin: 10px auto; /* Center horizontally */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+  overflow: hidden; /* Prevent icon overflow on focus */
+}
+
+.search-bar {
+  border: none;
+  outline: none;
+  flex-grow: 1; /* Allow input to take up available space */
+  padding: 8px;
+  font-size: 16px;
+  color: #333;
+  transition: background-color 0.3s ease; /* Smooth background transition */
+}
+
+.search-bar::placeholder {
+  color: #999; /* Light gray placeholder text */
+}
+
+.search-container:focus-within {
+  border-color: #007bff; /* Blue border on focus */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.2); /* Softer blue shadow on focus */
+}
+  /* Responsive adjustments (example) */
+  @media (max-width: 768px) {
+      .vendor-card {
+          width: calc(50% - 10px); /* Two cards per row on smaller screens */
+      }
+  }
+  @media (max-width: 500px) {
+      .vendor-card {
+          width: 100%; /* One card per row on very small screens */
+      }
+  }
