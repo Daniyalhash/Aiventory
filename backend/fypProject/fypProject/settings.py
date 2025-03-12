@@ -139,3 +139,20 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ORIGIN_ALLOW_ALL = True  # For development; you can restrict in production
+
+CORS_ALLOW_ALL_ORIGINS = True  # Allow all origins (not recommended for production)
+# OR specify allowed origins
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",  # Frontend origin
+]
+# Email Configuration
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'  # Or your SMTP server
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'syeddaniyalhashmi890@gmail.com'  # Replace with your email
+EMAIL_HOST_PASSWORD = 'kpekcpxejhntqxks'  # App Password (without spaces)
+DEFAULT_FROM_EMAIL = 'Your App <your-email@gmail.com>'
+
+
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
