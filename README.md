@@ -1,4 +1,4 @@
-##Aiventory - AI-Powered Inventory Management System
+## Aiventory - AI-Powered Inventory Management System
 
 📌 Overview
 
