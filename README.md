@@ -1,10 +1,10 @@
 ## Aiventory - AI-Powered Inventory Management System
 
-📌 Overview
+# 📌 Overview
 
 Aiventory is an AI-powered inventory management system designed to streamline stock tracking, demand forecasting, and vendor management for businesses. The system leverages advanced machine learning algorithms to provide predictive insights, optimize stock levels, and automate various inventory operations.
 
-🚀 Tech Stack
+# 🚀 Tech Stack
 
 Frontend (Web): Next.js (React, TypeScript)
 
@@ -16,9 +16,7 @@ Mobile App: React Native
 
 AI/ML Integration: Python (Scikit-Learn, TensorFlow)
 
-Cloud & Hosting: AWS / Firebase
-
-🎯 Main Features
+# 🎯 Main Features
 
 🔹 Real-Time Inventory Tracking
 
@@ -58,7 +56,7 @@ Product benchmarking and low-stock alerts.
 
 Customizable sales reports (CSV & PDF export).
 
-💡 Conclusion
+# 💡 Conclusion
 
 Aiventory is an intelligent and efficient solution for inventory management, leveraging AI/ML to optimize stock levels, reduce wastage, and improve vendor relations. With its scalable architecture, the system aims to cater to businesses of all sizes.
 
