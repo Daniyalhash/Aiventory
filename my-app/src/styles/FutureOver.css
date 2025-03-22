@@ -1,0 +1,26 @@
+/* General Section Styling */
+.Futuresection {
+  padding: 10px 50px;
+}
+
+/* Main Heading Styling */
+.FuturesecHead {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: 35px;
+  color: #17412D;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+
+/* Subheading Styling */
+.FuturesecSubhead {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #333;
+  line-height: 1.3;
+}
+
+/* Media Queries for Responsiveness */
+

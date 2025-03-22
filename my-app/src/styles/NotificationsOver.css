@@ -1,9 +1,10 @@
-* {
+/* * {
 
   font-family: 'Poppins',sans-serif;
-}
+} */
 
-.section{
+
+.Notificationssection{
     padding: 10px 50px;
     
     
@@ -24,7 +25,7 @@
   font-size: 16px;
 }
 
-  .secHead {
+  .NotificationssecHead {
     font-family: 'Poppins', sans-serif;
     font-weight: 300;
     font-size: 40px;
@@ -32,13 +33,17 @@
     /* Reduce line height to bring subheading closer */
     line-height: 1.2;
     margin-bottom: 10px; /* Add margin to create space between headings */
+    font-family: 'Poppins', sans-serif;
+
   }
   
-  .secSubhead {
+  .NotificationssecSubhead {
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
     font-size: 20px;
     color: #333;
     /* Reduce line height to bring it closer to the main heading */
+    font-family: 'Poppins', sans-serif;
+
     line-height: 1.3;
   }

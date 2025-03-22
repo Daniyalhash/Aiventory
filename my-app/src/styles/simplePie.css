@@ -1,0 +1,10 @@
+.stockLevelDisplay{
+position: absolute;
+left: 20;
+top:70 ;
+}
+.stcokLevelCount{
+    font-weight: 500;
+    line-height: -1;
+    color: #17412D;
+}

@@ -1,6 +1,7 @@
 from bson import ObjectId
 from rest_framework.response import Response
 import random
+from datetime import datetime
 
 class DashboardUtils:
     def __init__(self, db):
@@ -10,43 +11,43 @@ class DashboardUtils:
             return {"error": "User ID is required!", "status": 400}
 
         try:
-            product_documents = self.db["products"].find({"user_id": ObjectId(user_id)})
-            if not product_documents:
+            today_date = datetime.utcnow()  # Get current UTC date
+
+            pipeline = [
+                {"$match": {"user_id": ObjectId(user_id)}},
+                {"$unwind": "$products"},
+                {
+                    "$group": {
+                        "_id": None,
+                        "total_unique_products": {"$addToSet": "$products.productname"},
+                        "expired_products_list": {
+                            "$sum": {
+                                "$cond": [
+                                {"$lt": ["$products.expirydate", today_date]},
+                                    1,
+                                    0
+                                ]
+                            }
+                        },
+                        "total_vendors": {"$addToSet": "$products.vendor_id"}
+                    }
+                },
+                {
+                    "$project": {
+                        "_id": 0,
+                        "total_unique_products": {"$size": "$total_unique_products"},
+                        "expired_products_list": 1,
+                        "total_vendors": {"$size": "$total_vendors"}
+                    }
+                }
+            ]
+
+            result = list(self.db["products"].aggregate(pipeline))
+
+            if result:
+                return result[0]
+            else:
                 return {"error": "No products found for this user!", "status": 404}
-
-            total_unique_products = set()
-            low_stock_product_list = []
-            total_vendors = set()
-
-            for product_doc in product_documents:
-                products_array = product_doc.get("products", [])
-
-                for product in products_array:
-                    stockquantity = product.get("stockquantity", 0)
-                    reorderthreshold = product.get("reorderthreshold", 0)
-                    category = product.get("category", "N/A")
-                    vendor_id = product.get("vendor_id", "N/A")
-                    product_name = product.get("productname")
-
-                    if product_name:
-                        total_unique_products.add(product_name)
-
-                    if stockquantity < reorderthreshold:
-                        low_stock_product_list.append({
-                            "productname": product.get("productname"),
-                            "category": category,
-                            "stockquantity": stockquantity,
-                            "vendor_id": str(vendor_id)
-                        })
-
-                    if vendor_id:
-                        total_vendors.add(str(vendor_id))
-
-            return {
-                "total_unique_products": len(total_unique_products),
-                "low_stock_products_list": len(low_stock_product_list),
-                "total_vendors": len(total_vendors)
-            }
 
         except Exception as e:
             return {"error": str(e), "status": 500}
@@ -60,7 +61,10 @@ class DashboardUtils:
             if not user:
                 return {"error": "User not found!", "status": 404}
 
-            product_documents = self.db["products"].find({"user_id": ObjectId(user_id)})
+            product_documents = list(self.db["products"].aggregate([
+                {"$match": {"user_id": ObjectId(user_id)}},
+                {"$sample": {"size": 2}}  # Fetch 2 random products directly
+            ]))
             if not product_documents:
                 return {"error": "No products found for this user!", "status": 404}
 

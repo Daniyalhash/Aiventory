@@ -14,7 +14,7 @@ const Cards2 = () => {
     lowStock: 25,
     healthyStock: 65,
   };
-  // Use SWR for fetching benchmark data
+  // Use SWR for fetching benchmark data -- API
   const { data: benchmarkData, error } = useSWR(
     userId ? ['get-dashboard-visuals', userId] : null, 
     () => fetchDashboardVisuals(userId!), 
@@ -31,15 +31,13 @@ const Cards2 = () => {
       <DashboardCard2
         title="Product Benchmarking"
         value={0}
-        description="Analysis of three best products"
         link="/dashboard/insights"
         bgColor="bg-custom-one"
         graphContent={<CompetitorComparisonChart data={benchmarkData || []} />}
       />
           <DashboardCard2
-        title="Expiry Product Analysis"
+        title="Stock Analysis"
         value={0}
-        description="Analysis of three best products"
         link="/dashboard/insights"
         bgColor="bg-custom-third"
         graphContent={<SimpleStockPieChart />}

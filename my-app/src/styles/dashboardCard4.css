@@ -1,0 +1,139 @@
+/* Global reset */
+* {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Large card section with flexbox */
+.LargecardSection {
+  display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Space between cards */
+    padding: 10px 50px; /* Consistent padding */
+    justify-content: space-between; /* Distribute space between cards */
+    width: 100%; /* Ensure container takes full width */
+    max-width: 1500px; /* Optional: Set a max-width for very large screens */
+    margin: 0 auto; /* Center the container on the page */
+}
+
+/* Card styling */
+.card3 {
+  position: relative;
+  border-radius: 16px; /* Overall border radius */
+  padding: 20px;
+  max-width: 100%;
+  height: 330px;
+  border: none;
+  color: #000;
+  overflow: hidden;
+  font-family: "Arial", sans-serif;
+  flex: 1 1 calc(33% - 20px); /* Flex card layout, 3 cards per row */
+  min-width: 250px; /* Minimum width for cards */
+  box-sizing: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.1), 
+
+}
+
+.card3.bg-custom-one {
+  background-color: #ffffff; /* Custom background */
+}
+
+.card3.bg-custom-third {
+  background-color: #ffffff; /* Custom background */
+}
+
+/* Text section styling */
+.textSection2 {
+  margin-bottom: 20px; /* Space between text and graph */
+}
+
+.cardTitle2,
+.cardTitle {
+  font-size: 20px;
+  color: #17412D;
+  font-weight: 500;
+  padding-top: 10px;
+  z-index: 2;
+  position: relative;
+}
+
+.cardValue2 {
+  font-size: 50px;
+  font-weight: bold;
+  color: #17412D;
+  margin: 0;
+  z-index: 2;
+  position: relative;
+}
+
+.cardDescription2 {
+  font-size: 18px;
+  color: #17412D;
+  margin: 10px 0 5px;
+  z-index: 2;
+  position: relative;
+}
+
+/* Graph inside the card */
+.graphSection2 {
+  width: 100%;
+  height: 250px; /* Adjust the height of the graph */
+  margin-top: 20px;
+  border-radius: 10px; /* Rounded corners for the graph */
+}
+
+/* Chart Wrapper */
+.chartWrapper2 {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  width: 100%; /* Occupies full width */
+  padding: 20px; /* Increased padding for a more spacious layout */
+  background-color: #ffffff; /* White background for the chart */
+  border-radius: 16px; /* Match the card style */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); /* Soft shadow for better separation */
+  height: 100%; /* Adjusted height to fill the space */
+  border: 2px solid #17412D; /* Added border with highlighting color */
+}
+
+/* Arrow button (top-right corner) */
+.iconArrow2 {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #17412D; /* Changed to the highlighting color */
+  color: #ffffff; /* White arrow */
+  border: none;
+  border-radius: 50%;
+  width: 60px; /* Increased width */
+  height: 60px; /* Increased height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  rotate: 330deg;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for visibility */
+  z-index: 3;
+  font-size: 30px; /* Increased font size for the arrow */
+}
+
+.iconArrow2:hover {
+  background: #ffffff; /* White background when hovering */
+  color: #17412D; /* Change arrow color to match the original color */
+  transition: 0.3s ease;
+}
+
+/* Media query for smaller screens */
+@media screen and (max-width: 768px) {
+  .card3 {
+    flex: 1 1 calc(50% - 20px); /* Two cards per row on medium screens */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .card3 {
+    flex: 1 1 100%; /* One card per row on very small screens */
+  }
+}

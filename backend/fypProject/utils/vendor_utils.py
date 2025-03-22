@@ -31,6 +31,8 @@ class VendorUtils:
                 "vendors": [
                     {
                         "vendor": vendor_item.get("vendor"),
+                        "category": vendor_item.get("category"),
+
                         "DeliveryTime": vendor_item.get("DeliveryTime"),
                         "ReliabilityScore": vendor_item.get("ReliabilityScore"),
                         "_id": str(vendor_item.get("_id")) if vendor_item.get("_id") else None,

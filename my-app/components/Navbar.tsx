@@ -32,9 +32,10 @@ const Navbar = () => {
           <FontAwesomeIcon icon={faUsers} className="icon" />
           Insights
         </Link>
-        <Link href="/dashboard/predictions" className={pathname === '/dashboard/predictions' ? 'active' : ''}>
+    
+        <Link href="/dashboard/future" className={pathname === '/dashboard/future' ? 'active' : ''}>
           <FontAwesomeIcon icon={faUsers} className="icon" />
-          Predictions
+          Future
         </Link>
         <Link href="/dashboard/setting" className={pathname === '/dashboard/setting' ? 'active' : ''}>
           <FontAwesomeIcon icon={faCogs} className="icon" />

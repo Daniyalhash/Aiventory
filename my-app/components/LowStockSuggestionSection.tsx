@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState, useEffect } from 'react';
 import "@/styles/low.css";
 import axios from 'axios';
+import Link from 'next/link';
+import { useRouter } from "next/navigation";
 
 type LowStockProduct = {
   productname: string;
@@ -15,6 +17,7 @@ type VendorDetails = {
   DeliveryTime: number;
   ReliabilityScore: number;
   vendor: string;
+  vendorPhone : string;
 };
 
 
@@ -31,6 +34,7 @@ const LowStockSuggestionSection: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState<string>(''); // State for search input
 
   // const [vendorDetails, setVendorDetails] = useState<Vendor[]>([]);
+  const router = useRouter();
 
   const [vendorDetails, setVendorDetails] = useState<VendorDetails[] | null>(null); // State for vendor details
   useEffect(() => {
@@ -67,27 +71,22 @@ const LowStockSuggestionSection: React.FC = () => {
   }, []);
 
 
-  const handleProductClick = async (product: LowStockProduct, index: number) => {
-    setSelectedProductIndex(index === selectedProductIndex ? null : index);
-    setSelectedProduct(product);
+  const fetchVendorDetails = async (product: LowStockProduct) => {
+   
     const userId = localStorage.getItem("userId"); // Retrieve user_id from localStorage
-    console.log("User ID being sent:", userId);
-    console.log("product vendor_id", product.vendor_id) // Debug log
-    console.log("product Category", product.category) // Debug log
-    console.log("product name", product.productname) // Debug log
+    console.log("Fetching vendor details for:", product.productname);
     setLoading(true);
     try {
       const response = await axios.get('http://127.0.0.1:8000/aiventory/get-vendor-details/', {
         params: { user_id: userId, category: product.category, vendor_id: product.vendor_id, productname: product.productname }, // Assuming `id` is the product's unique identifier
       });
-      console.log("vendor comimg", response.data)
 
-      if (response.status === 200 && Array.isArray(response.data)) { // Check if the response data is an array
-        setVendorDetails(response.data); // Update state directly with the received array
+      if (response.status === 200 && response.data.vendors && Array.isArray(response.data.vendors)) {
+        setVendorDetails(response.data.vendors); // Extract the vendors array correctly
       } else {
         console.error("Invalid vendor data format:", response.data);
         setError("Invalid vendor data received.");
-        setVendorDetails(null) //set null in case of error
+        setVendorDetails(null);
       }
     } catch (error) {
       console.error("Error fetching vendor details:", error);
@@ -97,9 +96,52 @@ const LowStockSuggestionSection: React.FC = () => {
     }
   };
 
+  const handleToggleVendors = (product: LowStockProduct, index: number) => {
+    if (selectedProductIndex === index) {
+      setSelectedProductIndex(null);
+      setVendorDetails(null);
+      setSelectedProduct(null); // Reset selected product when closing
 
+    } else {
+      setSelectedProductIndex(index);
+      fetchVendorDetails(product);
+      setSelectedProduct(product); // ✅ Set selected product here
 
+    }
+  };
+  const handleConfirmOrder = (vendor: VendorDetails) => {
+    if (!selectedProduct) {
+      alert("Please select a product first!");
+      return;
+    }
 
+    const invoiceURL = `/dashboard/setting/invoice?productname=${encodeURIComponent(selectedProduct.productname)}
+    &category=${encodeURIComponent(selectedProduct.category)}
+    &stockquantity=${selectedProduct.stockquantity}
+    &vendor=${encodeURIComponent(vendor.vendor)}
+    &vendorPhone=${encodeURIComponent(vendor.vendorPhone)}
+    &deliveryTime=${vendor.DeliveryTime}
+    &reliabilityScore=${vendor.ReliabilityScore}`;
+  
+    console.log("Redirecting to:", invoiceURL); // ✅ Check in console
+  
+    router.push(invoiceURL);
+  };
+  // const handleConfirmOrder = (vendor: VendorDetails) => {
+  //   // Check if a product is selected
+  //   if (!selectedProduct) {
+      
+  //     console.log("Please select a product first!");
+  //     return; // Prevent proceeding if no product is selected
+  //   }
+  
+  //   // Print the selected product and vendor details to the console
+  //   console.log("Selected Product:", selectedProduct);
+  //   console.log("Vendor Name:", vendor.vendor);
+  //   console.log("Vendor Phone:", vendor.vendorPhone);
+  //   console.log("Delivery Time:", vendor.DeliveryTime);
+  //   console.log("Reliability Score:", vendor.ReliabilityScore);
+  // };
   // Filter products based on search term
   const filteredProducts = lowStockProducts.filter(product =>
     product.productname.toLowerCase().includes(searchTerm.toLowerCase())
@@ -117,50 +159,61 @@ const LowStockSuggestionSection: React.FC = () => {
     setCurrentPage(1); // Reset to first page when searching
   };
 
-  // Handle page change
-  const handleNextPage = () => {
-    if (indexOfLastProduct < lowStockProducts.length) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
-
-  const handlePreviousPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
-  };
 
 
   const renderVendors = () => {
-    if (!vendorDetails) { // Check if vendorDetails is null or undefined
+    if (!vendorDetails || vendorDetails.length === 0) {
       return <p>No vendors available.</p>;
     }
-    if (vendorDetails.length === 0) {
-      return <p>No vendors available.</p>;
-    }
+  
+    return (
+      <table className="vendor-table">
+        <thead>
+          <tr>
+            <th>Vendor Name</th>
+            <th>Delivery Time</th>
+            <th>Reliability Score</th>
+            <th>Phone</th>
 
-    return vendorDetails.map((vendor, index) => (
-      <div key={index} className="vendor-details">
-        <p><strong>Vendor Name:</strong> {vendor.vendor}</p>
-        <p><strong>Delivery Time:</strong> {vendor.DeliveryTime}</p>
-        <p><strong>Reliability Score:</strong> {vendor.ReliabilityScore}</p>
-      </div>
-    ));
+            <th>Order</th>
+          </tr>
+        </thead>
+        <tbody>
+          {vendorDetails.map((vendor, index) => (
+            <tr key={index}>
+              <td>{vendor.vendor}</td>
+              <td>{vendor.DeliveryTime} days</td>
+              <td>{vendor.ReliabilityScore}</td>
+              <td>{vendor.vendorPhone}</td>
+
+              <td>
+              <button className="confirm-order-btn" onClick={() => handleConfirmOrder(vendor)}>
+              Confirm Order</button>
+
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    );
   };
   return (
     <div className="low-stock-suggestion-section">
       {/* <h2>Low Stock Products( {lowStockProducts.length} )</h2> */}
-      <h2>Low Stock Products ({filteredProducts.length})</h2>
-      {/* Search bar */}
-      <div className="search-container">
-        <input
-          type="text"
-          placeholder="Search by product name..."
-          value={searchTerm}
-          onChange={handleSearchChange}
-          className="search-bar"
-        />
+      <div className="low-stock-sub-section">
+        <h2>Low Stock Products ({filteredProducts.length})</h2>
+        {/* Search bar */}
+        <div className="search-container">
+          <input
+            type="text"
+            placeholder="Search by product name..."
+            value={searchTerm}
+            onChange={handleSearchChange}
+            className="search-bar"
+          />
+        </div>
       </div>
+
 
 
       {error && <p className="error-message">Error: {error}</p>}
@@ -170,12 +223,13 @@ const LowStockSuggestionSection: React.FC = () => {
             <div
               key={index}
               className="low-stock-product"
-              onClick={() => handleProductClick(product, index)}
             >
               <h3>{product.productname}</h3>
               <p>Category: {product.category}</p>
               <p>Stock Quantity: {product.stockquantity}</p>
-
+              <button onClick={() => handleToggleVendors(product, index)}>
+                {selectedProductIndex === index ? "Close" : "Show Vendors"}
+              </button>
               {selectedProductIndex === index && (
                 <div className="vendor-details-container slide-in">
                   {renderVendors()} {/* Call renderVendors function */}

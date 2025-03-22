@@ -38,3 +38,39 @@
     font-size: 16px;
   }
   
+  /* 
+   */
+   .buttonContainer {
+    display: flex;
+    align-items: center; /* Align items vertically */
+    gap: 10px; /* Space between buttons */
+  }
+   .dropdown2 {
+    position: relative; /* Position relative for absolute positioning of dropdown */
+  }
+  
+ 
+.dropdownMenu {
+  position: absolute; /* Position the dropdown menu */
+  background-color: white; /* Background color for dropdown */
+  border: 1px solid #ccc; /* Border for dropdown */
+  border-radius: 5px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow for dropdown */
+  z-index: 1000;
+  margin-right: 200px; /* Ensure dropdown is above other elements */
+  margin-top: 200px; /* Space between button and dropdown */
+  width: 200px; /* Set width for dropdown */
+}
+  
+  .dropdownMenu div {
+    padding: 10px; /* Padding for dropdown items */
+    cursor: pointer; /* Pointer cursor on hover */
+  }
+  
+  .dropdownMenu div:hover {
+    background-color: #f0f0f0; /* Highlight on hover */
+  }
+  /* Optional: Adjust the calendar button position */
+.dropdown2 Button {
+  margin-left: 20px; /* Adjust this value to change the position */
+}

@@ -1,15 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ResponsiveContainer, PieChart, Pie, Cell, Tooltip, Legend } from "recharts";
 import { motion } from "framer-motion";
-
-// Static Data for Pie Chart
-const chartData = [
-  { name: "Out of Stock", value: 10, color: "#FF5C8D" },  // Pink
-  { name: "Low Stock", value: 25, color: "#FFB84D" },    // Light Orange
-  { name: "Healthy Stock", value: 65, color: "#4CAF50" }, // Green
-];
-
+import '@/styles/simplePie.css'
+import useSWR from 'swr';
+import { fetchStockData } from '@/utils/api';
 const SimpleStockPieChart = () => {
+
+  const userId = typeof window !== "undefined" ? localStorage.getItem("userId") : null;
+  console.log("User ID from localStorage:", userId);
+ // Fetch stock data using SWR
+ const { data: benchmarks, error } = useSWR(
+  userId ? ['get-stock-levels', userId] : null, 
+  () => fetchStockData(userId), 
+  {
+    revalidateOnFocus: false,
+    shouldRetryOnError: false,
+  }
+);
+console.log("Fetched Stock Data:", benchmarks);
+
+const benchmarkData = benchmarks
+  ? benchmarks.map((item, index) => ({
+      name: item.name, // Using the name from API
+      value: item.value, // Using the value from API
+      color: index === 0 ? "#FF5C8D" : index === 1 ? "#FFB84D" : "#4CAF50",
+    }))
+  : [
+      { name: "Out of Stock", value: 0, color: "#FF5C8D" },
+      { name: "Low Stock", value: 0, color: "#FFB84D" },
+      { name: "Healthy Stock", value: 0, color: "#4CAF50" },
+    ];
+
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.9 }}
@@ -17,12 +38,24 @@ const SimpleStockPieChart = () => {
       transition={{ duration: 1 }}
       className="flex justify-center items-center w-full"
     >
+        {/* Display stock levels in numbers */}
+        <div className="stockLevelDisplay">
+        {benchmarkData.map((item, index) => (
+          <div key={index} className="stcokLevelCount">
+            <span
+              className="w-4 h-4 rounded-full"
+              style={{ backgroundColor: item.color }}
+            ></span>
+            {item.name}: <span className="text-gray-700">{item.value}</span>
+          </div>
+        ))}
+      </div>
       <ResponsiveContainer width={650} height={300}>
-        <PieChart>
-          <Pie
-            data={chartData}
+      <PieChart margin={{ top: 20, bottom: -50 }}>  {/* Added margin */}
+      <Pie
+            data={benchmarkData}
             cx="60%"
-            cy="80%"
+            cy="65%"  // Adjusted to move the pie chart upward
             labelLine={false}
             label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
             outerRadius={200}
@@ -30,7 +63,7 @@ const SimpleStockPieChart = () => {
             startAngle={180} // Rotate the pie chart for better visual appeal
             endAngle={0}
           >
-            {chartData.map((entry, index) => (
+            {benchmarkData.map((entry, index) => (
               <Cell
                 key={`cell-${index}`}
                 fill={`url(#gradient-${index})`} // Apply gradient color

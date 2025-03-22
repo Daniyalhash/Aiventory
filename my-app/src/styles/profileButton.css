@@ -9,23 +9,29 @@
 *{
   font-family: "Poppins",sans-serif;
 }
+.bellSection{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+}
 /* Bell Icon Container */
 .bellIconContainer {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0 -5px; /* Reduce horizontal space between icons */
+
 }
 
 .bellIcon {
   width: 40px;
   height: 40px;
   border-radius: 50%; /* Makes the bell icon circular */
-  background-color: #f0f0f0; /* Light background */
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
   transition: background-color 0.3s ease; /* Transition effect */
 }
 
@@ -38,6 +44,14 @@
   font-size: 20px;
 }
 
+
+.bellIconContainer .divLine {
+  width: 2px; /* Set the width to make it a thin line */
+  background-color: rgba(174, 174, 174, 0.5); /* Light gray color with some transparency */
+  height: 30px; /* Set the height to match the icons */
+  margin: 0 18px; /* Space around the line */
+  /* Remove line-height as it's not needed for a div */
+}
 /* Profile Section */
 .profile {
   display: flex;
@@ -119,8 +133,9 @@
 .dropdown {
   z-index: 5;
   position: absolute;
-  top: 100px; 
+  top: 80px; 
   right: 30px;
+  
   width: 200px; 
   background-color: #F0F0F0;
   border: 1px solid #ddd;
@@ -129,66 +144,82 @@
   padding: 10px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center; /* Align items to the left */
+
+}
+.dropdownButton {
+  margin-top: 0.41rem;
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Stack items vertically */
+  align-items: flex-start; /* Align items to the left */
+  width: 100%; /* Ensure it takes the full width of the dropdown */
 }
 
+.logoutButton {
+  display: flex; /* Ensure the button content is also flex */
+  align-items: center; /* Center icon and text vertically */
+  width: 100%; /* Make buttons take full width */
+  text-align: left; /* Align text to the left */
+  padding: 10px 20px; /* Padding for spacing */
+  border: none; /* Remove default border */
+  border-radius: 30px; /* Rounded corners */
+  font-size: 16px; /* Font size */
+  font-weight: 500; /* Slightly bold text */
+  color: #17412D; /* Text and icon color */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions for hover effect */
+  text-decoration: none;
+}
+
+.logoutButton:hover {
+  background-color: #e0e0e0; /* Slight hover effect */
+}
 .dropdownContent {
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: hidden;
 }
 
 .dropdownPic {
-  border: 3px solid #91DD60;
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 10px;
 }
 
 .dropdownName {
-  font-weight: 600;
-  font-size: 20px;
+  font-weight: 500;
+  font-size: 30px;
   color: #17412D;
-  margin: 5px 0;
-}
+  font-variant:small-caps;
+margin-bottom: 1rem;}
 
 .dropdownPhone {
-  font-size: 0.85rem;
+ text-align: center;
   color: #555;
-  margin: 5px 0;
-}
+  margin-top: -1rem;
+  white-space: normal; /* Allow text to wrap to the next line */
+  word-wrap: break-word; /* Break long words onto the next line if necessary */
+  overflow-wrap: break-word; /* Ensures that long words will break */
+  width: 100%; /* Ensure it takes the full width of the container */}
 
 
-/* Styling for logout button */
-.logoutButton {
-  display: flex;
-  align-items: center; /* Vertically center the icon and text */
-  background-color: #FF4D4D; /* Red color for logout */
-  color: white; /* Text and icon color */
-  padding: 10px 20px; /* Padding for spacing */
-  border: none; /* Remove default border */
-  border-radius: 30px; /* Rounded corners */
-  font-size: 16px; /* Font size */
-  font-weight: 500; /* Slightly bold text */
-  cursor: pointer; /* Pointer cursor on hover */
-  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions for hover effect */
-}
 
 .logoutButton .IconLogout {
   margin-right: 10px; /* Space between icon and text */
   font-size: 20px; /* Icon size */
 }
-
+.lineDiv{
+  width: 100%; /* Set the width to make it a thin line */
+  background-color: rgba(174, 174, 174, 0.5); /* Light gray color with some transparency */
+  height: 1px; /* Set the height to match the icons */
+  margin: 0 18px; /* Space around the line */
+  /* Remove line-height as it's not needed for a div */
+}
 /* Hover effect for the button */
 .logoutButton:hover {
-  background-color: #FF2A2A; /* Darker red on hover */
   transform: scale(1.05); /* Slight scaling effect */
 }
 
-/* Focus effect */
-.logoutButton:focus {
-  outline: none; /* Remove default focus outline */
-  box-shadow: 0 0 5px rgba(255, 77, 77, 0.7); /* Red shadow when focused */
-}

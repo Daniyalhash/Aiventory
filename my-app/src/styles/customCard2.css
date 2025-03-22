@@ -1,0 +1,159 @@
+
+/* Card container with flexbox to arrange cards neatly */
+.cardSection5 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0px; /* Space between cards */
+  justify-content: space-between; /* Distribute space between cards */
+}
+
+  .compare2 {
+    --circle-r: 30px /*input*/;
+    --big-circle-r: 50px /*input*/;
+    --pillar-size: max(34px /*input*/, var(--circle-r));
+    --card-color: #fff;
+
+    width: 450px;
+    border-radius: 40px;
+  }
+  
+  .cardC5 {
+    border: 1px solid #d3d3d3; /* Light gray border */
+
+    --circle-d: calc(var(--circle-r) * 2);
+    --circles-space: calc(var(--big-circle-r) + var(--pillar-size));
+    --circle-extend-inset: calc(var(--circle-r) + var(--circles-space));
+
+    position: relative;
+    border-top-right-radius: 0;
+    filter: drop-shadow(var(--card-shadow));
+    width: 500px;
+    height: 330px;
+    border-radius: 25px;
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+   background-color: #fff;
+        overflow: hidden;
+        
+
+  }
+  /* Overlapping background shapes */
+  .card.bg-custom-one {
+    background-color: #ffffff; /* Custom blue */
+  }
+  .card.bg-custom-third {
+    background-color: #720101; /* Custom blue */
+  }
+
+/* ... other styles ... */
+
+
+
+ 
+  /* Text styling */
+
+  .cardContent5 .subTitle{
+    font-size: 15px;
+    color: #7a827e;
+    font-weight: 400;
+    padding-top: 10px;
+    z-index: 2;
+    position: relative;    margin-bottom: 1rem;
+
+
+  }
+  .cardContent5 .subTitle2{
+    font-size: 20px;
+    color: #17412D;
+    font-weight: lighter;
+    padding-top: 10px;
+    z-index: 2;
+    position: relative;
+  }
+  .cardContent5 .cardMain{
+    margin: 0 auto;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .cardContent5 .cardDescription {
+    font-size: 20px;
+    color: #17412D;
+    margin: -10px 0 5px;
+    z-index: 2;
+    position: relative;
+    margin-bottom: 1rem;
+
+  }
+  .cardContent5 .cardDescription2{
+    text-align: left;
+    font-style: italic;
+    margin-bottom: 1rem;
+
+    font-size: 16px; /* Description font size */
+    color: #555; /* Description color */
+    margin-top: 10px; /* Space above description */
+  }
+  .cardContent5 .cardValue {
+    font-size: 100px;
+    font-weight: bold;
+    color: #9FE870;
+    margin: 0;
+    z-index: 2;
+    position: relative;
+  }
+  
+  /* Arrow button (top-right corner) */
+  .cardContent5 .iconArrow {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ffffff; /* White background */
+    color: #17412D; /* Black arrow */
+    border: none;
+    border-radius: 50%;
+    width: 60px;  /* Increased width */
+    height: 60px;  /* Increased height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    rotate: 330deg;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for better visibility */
+    z-index: 3;
+    font-size: 30px; /* Increase font size for the arrow */
+  }
+  
+  .cardContent5 .iconArrow:hover {
+    background: #17412D;
+    color: #fff;
+    transition: 0.3s ease;
+  }
+ 
+  /* Overlapping background shape */
+.card::after {
+    content: "";
+    position: absolute;
+    top: 70px;
+    left: -30px;
+    width: 300px;
+    height: 200px;
+    background: rgba(0, 0, 0, 0.05); /* Slightly darker overlay */
+    transform: rotate(-30deg);
+    border-radius: 20px;
+    z-index: 0;
+  }
+  .cardBackground{
+    content: "";
+    position: absolute;
+    top: 70px;
+    left: -30px;
+    width: 300px;
+    height: 200px;
+    background: rgba(0, 0, 0, 0.05); /* Slightly darker overlay */
+    transform: rotate(-30deg);
+    border-radius: 20px;
+    z-index: -2;
+  }

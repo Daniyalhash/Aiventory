@@ -1,0 +1,91 @@
+/* Notification Section */
+.notifications-section {
+  padding: 10px 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Notification Box */
+.notifications-box {
+  position: relative;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+  display: flex;
+  gap: 15px;
+  width: 100%;
+  align-items: center;
+}
+
+/* Notification Header */
+.notifications-box-sec1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Alert & Close Icons */
+.alert-icon {
+  color: #ffcc00; /* Yellow Warning */
+  font-size: 40px;
+  font-weight: 500;
+}
+
+.close-icon {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  color: #dc3545; /* Red Close */
+  font-size: 25px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;}
+
+.close-icon:hover {
+  transform: scale(1.2);
+}
+.date-icon {
+  position: absolute;
+  top: 90px;
+  font-style: italic;
+  right: 15px;
+  color: #767575;
+  font-size: 15px;
+  transition: transform 0.2s ease-in-out;}
+
+
+
+/* Notification Text */
+.notifications-text {
+  font-size: 18px;
+  font-weight: 500;
+  color: #555;
+  margin-bottom: 12px;
+}
+.notifications-main-text{
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8px;
+}
+/* Notification Footer */
+.notifications-box-sec2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Visit Page Button */
+.visit-page-btn {
+ text-decoration: none;
+ cursor: pointer;
+}
+
+.visit-page-btn .icon {
+  margin-left: 8px;
+  
+}
+
+.visit-page-btn:hover {
+}

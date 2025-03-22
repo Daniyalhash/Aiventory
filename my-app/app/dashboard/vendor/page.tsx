@@ -2,7 +2,7 @@
 // app/dashboard/page.tsx
 import VendorOver from "@/components/VendorOver"
 import VendorOver2 from "@/components/VendorOver2"
-import ShowCSVData from "@/components/ShowCSVData";
+// import ShowCSVData from "@/components/ShowCSVData";
 
 import ButtonFrame2 from "@/components/ButtonFrame2";
 import "@/styles/vendor.css";

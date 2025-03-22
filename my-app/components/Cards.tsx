@@ -62,8 +62,8 @@ const Cards = () => {
       </DashboardCard3>
 
       <DashboardCard3
-        title="Stock Analysis"
-        value={data ? data.low_stock_products_list : "Loading..."}
+        title="Expiry Products"
+        value={data ? data.expired_products_list : "Loading..."}
         description="Low stock product"
         link="/dashboard/inventory"
         bgColor="green-card" // Use class name for green

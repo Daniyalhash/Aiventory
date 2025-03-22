@@ -31,6 +31,7 @@ from sklearn.ensemble import RandomForestClassifier
 
 from datetime import datetime, timedelta  # ✅ Correct import
 
+import bson
 
 from django.core.mail import send_mail
 from django.conf import settings
@@ -42,12 +43,14 @@ from utils.inventory_utils import InventoryUtils
 from utils.vendor_utils import VendorUtils
 from utils.insights_utils import InsightsUtils
 from utils.insights2_utils import InsightsManager
+from rest_framework import status
 
 
 # MongoDB Atlas connection
 client = MongoClient("mongodb+srv://syeddaniyalhashmi123:test123@cluster0.dutvq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 db = client["FYP"]
 SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "fallback_secret_key")
+invoices_collection = db["invoices"]  # Collection inside the DB
 
 # Initialize class with the database
 dashboard_utils = DashboardUtils(db)
@@ -100,16 +103,18 @@ def upload_dataset(request):
         file_bytes = dataset_file.read()
         df = pd.read_csv(BytesIO(file_bytes))  # Load into pandas dataframe
         df.columns = df.columns.str.strip()
+        df['category'] = df.get('category', 'Unknown')
+        df['vendorPhone'] = df['vendorPhone'].astype(str)
+        df["vendorPhone"] = df["vendorPhone"].apply(lambda x: str(int(float(x))) if str(x).replace('.', '', 1).isdigit() else str(x))
 
     # Assign IDs to vendors and process vendor data
-        vendor_columns = ["vendor","DeliveryTime", "ReliabilityScore"]  # The column we are interested in for vendor data
+        vendor_columns = ["vendor", "category","vendorPhone", "DeliveryTime", "ReliabilityScore"]  # Include category
         vendor_data = df[vendor_columns].drop_duplicates().reset_index(drop=True)
-        # Generate unique vendor IDs
-        vendor_data['_id'] = vendor_data.apply(lambda x: ObjectId(), axis=1)
-        vendor_mapping = dict(zip(vendor_data['vendor'], vendor_data['_id']))
-
-    # we can define vednor in vendor_columns
-       # Simulate Product Columns and Mapping to Vendor IDs
+       # Generate unique vendor IDs and map them
+        vendor_ids = {v: ObjectId() for v in vendor_data["vendor"].unique()}
+        vendor_data["_id"] = vendor_data["vendor"].map(vendor_ids)
+        vendor_mapping = vendor_ids  # Save for product mapping
+        
         product_columns = [
             "productname", "category", "subcategory", "vendor", "stockquantity", "sellingprice", "Barcode", 
             "expirydate", "pastsalesdata", "timespan",'reorderthreshold', 'costprice'
@@ -119,9 +124,6 @@ def upload_dataset(request):
         product_data = df[product_columns].drop_duplicates().reset_index(drop=True)
         # Map Vendor IDs to Product Data
         product_data['vendor_id'] = df['vendor'].map(vendor_mapping)
-        
-        
-         # Remove the 'vendor' column from the product data after mapping vendor IDs
         product_data.drop(columns=['vendor'], inplace=True)
 
  # Perform column classification
@@ -431,6 +433,29 @@ def get_products_by_name(request):
 
     except Exception as e:
         return Response({"error": str(e)}, status=500)
+# get user details for navbar
+
+@api_view(['GET'])
+def get_user_details(request):
+    user_id = request.query_params.get('user_id')
+    
+    if not user_id:
+        return Response({"error": "User ID is required!"}, status=400)
+    
+    try:
+        user = db["users"].find_one({"_id": ObjectId(user_id)})
+
+        if not user:
+            return Response({"error": "User not found!"}, status=404)
+
+        return Response({
+            "username": user["username"],
+            "email": user["email"],
+            "status": user["status"]
+        }, status=200)
+        
+    except Exception as e:
+        return Response({"error": str(e)}, status=500)
 #insights count-12
 
 @api_view(['GET'])
@@ -453,38 +478,6 @@ def get_vendor_details(request):
     return Response(result, status=status)
 
 
-# # Forgot Password Endpoint
-# @api_view(['POST'])
-# def forgot_password(request):
-#     email = request.data.get("email")
-#     user = db["users"].find_one({"email": email})
-
-
-#     if not user:
-#         return Response({"error": "Email not found"}, status=404)
-
-#     # Generate Reset Token
-#     reset_token = jwt.encode(
-#         {"userId": str(user["_id"]), "exp": datetime.datetime.utcnow() + datetime.timedelta(hours=1)},
-#         SECRET_KEY, algorithm="HS256"
-#     )
-
-#     # Create Password Reset URL
-#     reset_url = f"http://localhost:3000/reset-password?token={reset_token}"
-
-#     # Send Reset Email
-#     try:
-#         send_mail(
-#             'Password Reset Request',
-#             f'Hi {user["username"]},\n\nClick the link below to reset your password:\n{reset_url}\n\nIf you did not request a password reset, please ignore this email.',
-#             settings.DEFAULT_FROM_EMAIL,  # Make sure this is set in your settings.py
-#             [email],
-#             fail_silently=False,
-#         )
-#         return Response({"message": "Password reset link sent to your email"})
-#     except Exception as e:
-#         print(f"Error sending email: {str(e)}")  # Add logging
-#         return Response({"error": f"Failed to send email: {str(e)}"}, status=500)
 
 # Forgot Password Endpoint
 @api_view(['POST'])
@@ -580,6 +573,150 @@ def delete_user(request):
         return Response({"error": str(e)}, status=500)
 
 
+@api_view(['GET'])
+def get_stock_levels(request):
+    user_id = request.query_params.get('user_id')
 
+    if not user_id:
+        return Response({"error": "User ID is required!"}, status=400)
 
+    try:
+        pipeline = [
+            {"$match": {"user_id": ObjectId(user_id)}},
+            {"$unwind": "$products"},
+            {
+                "$project": {
+                    "stockquantity": "$products.stockquantity",
+                    "reorderthreshold": {
+                        "$ifNull": ["$products.reorderthreshold", 10]  # Default to 10 if missing
+                    }
+                }
+            },
+            {
+                "$group": {
+                    "_id": None,
+                    "out_of_stock": {
+                        "$sum": {"$cond": [{"$eq": ["$stockquantity", 0]}, 1, 0]}
+                    },
+                    "low_stock": {
+                        "$sum": {"$cond": [{"$lt": ["$stockquantity", "$reorderthreshold"]}, 1, 0]}
+                    },
+                    "healthy_stock": {
+                        "$sum": {
+                            "$cond": [{"$gte": ["$stockquantity", "$reorderthreshold"]}, 1, 0]
+                        }
+                    },
+                }
+            }
+        ]
 
+        result = list(db["products"].aggregate(pipeline))
+        
+        if not result:
+            return Response({"error": "No products found for this user!"}, status=404)
+
+        stock_levels = result[0] if result else {"out_of_stock": 0, "low_stock": 0, "healthy_stock": 0}
+        del stock_levels["_id"]  # Remove unnecessary MongoDB `_id` field
+
+        return Response(stock_levels)
+
+    except Exception as e:
+        return Response({"error": str(e)}, status=500)
+
+def parse_date(date_str):
+    formats = ["%Y-%m-%d", "%m/%d/%Y", "%d-%m-%Y"]  # Add more formats if needed
+    for fmt in formats:
+        try:
+            return datetime.strptime(date_str.strip(), fmt)
+        except ValueError:
+            continue
+    raise ValueError("Invalid date format. Expected YYYY-MM-DD, MM/DD/YYYY, or DD-MM-YYYY")
+@api_view(['POST'])
+def save_invoice(request):
+    try:
+        data = request.data
+        print(f"Received data: {data}")  
+
+        if not all(k in data for k in ["products", "vendor", "date"]):
+            return Response({"error": "Missing required fields"}, status=400)
+
+        total_amount = sum(p["price"] * p["quantity"] for p in data["products"])
+        print(f"✅ Total amount calculated: {total_amount}")
+
+        # ✅ Convert and handle multiple date formats
+        try:
+            invoice_date = parse_date(data["date"])
+            print(f"✅ Invoice date converted: {invoice_date}")
+        except ValueError as e:
+            print(f"❌ {str(e)}")
+            return Response({"error": str(e)}, status=400)
+
+        existing_invoice = invoices_collection.find_one({
+            "vendor": data["vendor"].strip(),  
+            "products": {"$elemMatch": {"name": data["products"][0]["name"].strip()}},
+            "date": invoice_date
+        })
+        print(f"🔍 Checking for existing invoice: {existing_invoice}")
+
+        if existing_invoice:
+            return Response({"message": "Invoice already exists, skipping save"}, status=200)
+
+        invoice = {
+            "products": data["products"],
+            "vendor": data["vendor"].strip(),
+            "date": invoice_date,
+            "total_amount": total_amount,
+            "created_at": datetime.utcnow(),
+        }
+
+        inserted_invoice = invoices_collection.insert_one(invoice)
+        print(f"✅ Invoice saved successfully with ID: {inserted_invoice.inserted_id}")
+
+        return Response({
+            "message": "Invoice saved successfully",
+            "invoice_id": str(inserted_invoice.inserted_id)
+        }, status=201)
+
+    except Exception as e:
+        print(f"❌ Error: {str(e)}")
+        return Response({"error": str(e)}, status=500)
+    
+    
+@api_view(['GET'])
+def get_invoices(request):
+    try:
+        invoices = list(invoices_collection.find({}))  # Fetch all invoices from MongoDB
+
+        # Convert ObjectId to string & format response
+        for invoice in invoices:
+            invoice["_id"] = str(invoice["_id"])  # Convert ObjectId to string
+            invoice["created_at"] = invoice["created_at"].strftime("%Y-%m-%d %H:%M:%S")  # Format date
+            invoice["total_amount"] = round(invoice["total_amount"], 2)  # Round total amount
+
+        return Response({"invoices": invoices}, status=200)
+
+    except Exception as e:
+        print(f"❌ Error fetching invoices: {str(e)}")
+        return Response({"error": str(e)}, status=500)
+
+@api_view(["DELETE"])
+def delete_invoice(request, invoice_id):
+    try:
+        print("Received Invoice ID:", invoice_id)
+
+        if not bson.ObjectId.is_valid(invoice_id):
+            print("Invalid Invoice ID format")
+            return Response({"error": "Invalid invoice ID"}, status=status.HTTP_400_BAD_REQUEST)
+
+        result = invoices_collection.delete_one({"_id": ObjectId(invoice_id)})
+
+        if result.deleted_count == 1:
+            print("Invoice deleted successfully")
+            return Response({"message": "Invoice deleted successfully"}, status=status.HTTP_200_OK)
+
+        print("Invoice not found")
+        return Response({"error": "Invoice not found"}, status=status.HTTP_404_NOT_FOUND)
+
+    except Exception as e:
+        print("Error:", str(e))
+        return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

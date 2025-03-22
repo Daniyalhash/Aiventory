@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import signup, login,forgot_password,reset_password, validate_token,upload_dataset,complete_signup,get_vendor_visuals,get_total_products,get_dashboard_visuals,get_current_dataset,get_inventory_visuals,get_vendor,get_categories,get_top_products_by_category,get_products_by_name,get_categories_p,get_vendor_details
+from .views import signup,delete_invoice,get_invoices,get_user_details,save_invoice,get_stock_levels, login,forgot_password,reset_password, validate_token,upload_dataset,complete_signup,get_vendor_visuals,get_total_products,get_dashboard_visuals,get_current_dataset,get_inventory_visuals,get_vendor,get_categories,get_top_products_by_category,get_products_by_name,get_categories_p,get_vendor_details
 
 urlpatterns = [
     # login---
@@ -10,6 +10,12 @@ urlpatterns = [
     path('complete_signup/', complete_signup, name='complete_signup'),  # Add this line
         path('forgot_password/', forgot_password, name='forgot_password'),  # Add this line
         path('reset-password/', reset_password, name='reset_password'),  # Add this line
+        path('get-user-details/', get_user_details, name='get_user_details'),  # Add this line
+        path('get-stock-levels/', get_stock_levels, name='get_stock_levels'),  # Add this line
+    path("save-invoice/", save_invoice, name="save_invoice"),
+
+    path('get-invoices/', get_invoices, name='get-invoices'),
+    path('delete-invoice/<str:invoice_id>/', delete_invoice, name='delete_invoice'),
 
     # dashboard---
 

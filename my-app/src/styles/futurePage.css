@@ -1,0 +1,14 @@
+.futurePage{
+    background-color: #F8F8F8;
+    height: auto;
+    padding: 20px;
+  }
+  .futureSub {
+    display: flex;
+    gap: 20px; /* Space between cards */
+    padding: 10px 50px; /* Consistent padding */
+    justify-content: flex-start; /* Align items to the start */
+    width: 100%; /* Ensure container takes full width */
+    max-width: 1500px; /* Optional: Set a max-width for very large screens */
+    margin: 0 auto; /* Center the container on the page */
+  }
